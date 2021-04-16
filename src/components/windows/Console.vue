@@ -114,6 +114,14 @@ export default {
 
         switch (command) {
           case 'mkdir':
+            if(options.match(/^\s/)) {
+              this.setValue(`Folder cant start with empty space.`)
+              stop = true
+            }
+            if(self.$parent.$parent.apps.some((app) => app.desc == options)) {
+              this.setValue(`Folder ${options} already exists.`)
+              stop = true
+            }
             opts.forEach(o => {
               o = o[0].replace(/-+/,'')
               if(o == 'help' || o == 'h') {
@@ -258,14 +266,14 @@ export default {
   font-size: 0.9rem;
   line-height: 1.2rem;
   resize: none;
-  background: #33485E;
+  background: var(--console-background);
   outline: none;
   box-shadow: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  caret-color: #fc9003;
+  caret-color: var(--console-scrollbar);
 }
 
 .console::-webkit-scrollbar {
@@ -277,10 +285,10 @@ export default {
 }
 
 .console::-webkit-scrollbar-thumb {
-  background: #fc9003;
+  background: var(--console-scrollbar);
 }
 
 .console::-webkit-scrollbar-thumb:hover {
-  background: #fc9003;
+  background: var(--console-scrollbar);
 }
 </style>

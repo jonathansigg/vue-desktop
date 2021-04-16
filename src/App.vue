@@ -91,6 +91,8 @@ export default {
   --grey: #f5f5f5;
   --glass: rgba(255,255,255,0.3);
   --taskbarheight: 45px;
+  --console-scrollbar: #fc9003;
+  --console-background: #33485E;
 }
 
 *, *::before, *::after {
